@@ -1,0 +1,499 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    min-height:100vh;
+    background:#f5f5f5;
+}
+
+.perfil{
+    background:#3A2312;
+    color:#FFFDF3;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px 20px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    text-align:center;
+}
+
+.logo{
+    width:100px;
+}
+
+.perfil h1{
+    margin:15px 0 25px;
+    font-size:24px;
+    letter-spacing:2px;
+}
+
+.perfil p{
+    margin:6px 0;
+    font-size:14px;
+    opacity:0.85;
+}
+
+.perfil button{
+    width:100%;
+    margin-top:25px;
+    padding:12px;
+    background:transparent;
+    color:#FFFDF3;
+    border:2px solid #FFFDF3;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:14px;
+}
+
+.perfil button:hover:not(:disabled){
+    background:#FFFDF3;
+    color:#3A2312;
+}
+
+.perfil button:disabled{
+    opacity:0.4;
+    cursor:not-allowed;
+}
+
+.btn-sair{
+    width:100%;
+    margin-bottom:12px;
+    padding:10px;
+    background:rgba(255,253,243,0.08);
+    color:#FFFDF3;
+    border:1px solid rgba(255,253,243,0.3);
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:13px;
+}
+
+.btn-sair:hover{
+    background:rgba(255,253,243,0.18);
+}
+
+.perfil footer{
+    width:100%;
+    padding-top:20px;
+    border-top:1px solid rgba(255,253,243,0.2);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.perfil footer div{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.perfil footer img{
+    width:24px;
+    cursor:pointer;
+    transition:0.3s;
+    opacity:0.6;
+}
+
+.perfil footer img:hover{
+    opacity:1;
+}
+
+main{
+    padding:30px;
+    max-width:960px;
+    margin:0 auto;
+    width:100%;
+}
+
+header{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:15px;
+}
+
+.login{
+    font-size:14px;
+    color:white;
+    border-radius:8px;
+    background-color:#3A2312;
+    padding:10px 24px;
+    border:none;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login:hover{
+    background-color:#854f28;
+}
+
+.filtros{
+    background:#3A2312;
+    margin:0 0 25px;
+    padding:12px;
+    text-align:center;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.filtros button{
+    padding:8px 22px;
+    background:transparent;
+    color:#FFFDF3;
+    border:1px solid rgba(255,253,243,0.5);
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:14px;
+}
+
+.filtros button:hover,
+.filtros .ativo{
+    background:#FFFDF3;
+    color:#3A2312;
+    border-color:#FFFDF3;
+}
+
+.receitas{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.receita{
+    border:1px solid #e0e0e0;
+    padding:20px;
+    border-radius:12px;
+    background:#fff;
+    transition:0.3s;
+}
+
+.receita:hover{
+    box-shadow:0 4px 20px rgba(0,0,0,0.1);
+    transform:translateY(-2px);
+}
+
+.receita h2{
+    text-align:center;
+    color:#3A2312;
+    font-size:17px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:15px 0;
+}
+
+.foto-perfil{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #3A2312;
+}
+
+.receita p{
+    margin:4px 0;
+    font-size:13px;
+    color:#666;
+}
+
+.interacoes{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid #eee;
+}
+
+.interacoes img{
+    width:22px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.interacoes img:hover{
+    transform:scale(1.2);
+}
+
+.paginacao{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-top:35px;
+}
+
+.paginacao a,
+.paginacao button{
+    padding:8px 16px;
+    border:1px solid #3A2312;
+    background:transparent;
+    color:#3A2312;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:14px;
+    text-decoration:none;
+}
+
+.paginacao a:hover,
+.paginacao button:hover,
+.paginacao .ativo{
+    background:#3A2312;
+    color:#FFFDF3;
+}
+
+.modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.modal-overlay.aberto{
+    display:flex;
+}
+
+.modal{
+    background:#fff;
+    padding:35px 30px 30px;
+    border-radius:16px;
+    width:100%;
+    max-width:380px;
+    position:relative;
+    animation:modalEntrar 0.3s ease;
+}
+
+@keyframes modalEntrar{
+    from{
+        opacity:0;
+        transform:scale(0.9) translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.modal-fechar{
+    position:absolute;
+    top:10px;
+    right:15px;
+    background:none;
+    border:none;
+    font-size:26px;
+    cursor:pointer;
+    color:#999;
+    transition:0.2s;
+    line-height:1;
+}
+
+.modal-fechar:hover{
+    color:#333;
+}
+
+.modal-logo{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.modal-logo img{
+    width:80px !important;
+}
+
+.modal h2{
+    text-align:center;
+    color:#3A2312;
+    margin-bottom:20px;
+}
+
+.modal h3{
+    text-align:center;
+    color:#4e3a2b;
+    margin-bottom:20px;
+}
+
+.modal form{
+    display:flex;
+    flex-direction:column;
+}
+
+.modal label{
+    font-size:14px;
+    color:#555;
+    margin-bottom:4px;
+}
+
+.modal input{
+    padding:10px 12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:14px;
+    outline:none;
+    transition:0.2s;
+}
+
+.modal input:focus{
+    border-color:#3A2312;
+}
+
+.modal form button[type="submit"]{
+    padding:12px;
+    background:#3A2312;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:5px;
+}
+
+.modal form button[type="submit"]:hover{
+    background:#854f28;
+    transform:scale(1.06);
+}
+
+.btn-cancelar{
+    margin-top:8px;
+    padding:10px;
+    background:transparent;
+    color:#3A2312;
+    border:1px solid #3A2312;
+    border-radius:8px;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn-cancelar:hover{
+    background:rgba(58,35,18,0.06);
+    transform:scale(1.06);
+}
+
+.erro-login{
+    color:#e74c3c;
+    font-size:13px;
+    text-align:center;
+    margin-bottom:5px;
+    min-height:18px;
+}
+
+.modal-footer{
+    background:#3A2312;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:12px;
+    margin:20px -30px -30px;
+    border-radius:0 0 16px 16px;
+}
+
+.modal-footer img{
+    width:22px;
+    opacity:0.8;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.modal-footer img:hover{
+    opacity:1;
+}
+
+.usuario-logado{
+    margin-top:15px !important;
+    font-weight:bold;
+    font-size:15px !important;
+    opacity:1 !important;
+}
+
+.usuario-topo{
+    color:#3A2312;
+    font-weight:bold;
+    font-size:14px;
+    margin-right:15px;
+}
+
+.logout-link{
+    color:#3A2312;
+    font-size:14px;
+    text-decoration:none;
+    padding:8px 16px;
+    border:1px solid #3A2312;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.logout-link:hover{
+    background:#3A2312;
+    color:#FFFDF3;
+}
+
+.sem-receitas{
+    text-align:center;
+    color:#999;
+    padding:40px;
+    font-size:16px;
+}
+
+#button_cancelar{
+    background-color: white;
+    border: solid 2px #3A2312;
+    color: black;
+    transition: 0.3s;
+}
+#button_cancelar:hover{
+    transform:scale(1.1);
+}
+
+#button_logar{
+    transition: 0.3;
+}
+
+#button_logar:hover{
+    transform:scale(1.1);
+}
+
+#logo2 {
+
+    left: 50%;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width: 500rem;
+    padding: 0.5%;
+
+}
+
+.footer_modal {
+    margin-top: 30px;
+    border-radius: 20px;
+    height: 50px;
+    background-color: #3A2312;
+}
+
+.footer_modal img{
+    width: 30px;
+    margin-right: 20px;
+    justify-content: center;
+    justify-items: center;
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade html</title>
+</head>
+<body>
+    <h1> HTML </h1>
+
+    <h3>Conectar outras paginas: </h3>
+
+    <div class="card">
+    <div class="code">
+
+        <pre><code>
+CSS: &LT link rel="stylesheet" href="css/style.css" &GT
+JavaScript: &LT script src="js/script.js" defer &GT &LT /script &GT
+        </code></pre>
+
+    </div>
+    </div>
+
+    <h3>criar tabelas: </h3>
+
+    <div class="card">
+    <pre><code>
+    <div class="code"> 
+&lt table &gt
+    &ltthead&gt
+        &lttr&gt
+        &ltth scope="col"&gtPerson&lt/th&gt
+        &ltth scope="col"&gtMost interest in&lt/th&gt
+        &ltth scope="col"&gtAge&lt/th&gt
+        &lt/tr&gt
+    &lt/thead&gt
+    &lttbody&gt
+        &lttr&gt
+        &ltth scope="row"&gtChris&lt/th&gt
+        &lttd&gtHTML tables&lt/td&gt
+        &lttd&gt22&lt/td&gt
+        &lt/tr&gt
+        &lttr&gt
+        &ltth scope="row"&gtDennis&lt/th&gt
+        &lttd&gtWeb accessibility&lt/td&gt
+        &lttd&gt45&lt/td&gt
+        &lt/tr&gt
+        &lttr&gt
+        &ltth scope="row"&gtSarah&lt/th&gt
+        &lttd&gtJavaScript frameworks&lt/td&gt
+        &lttd&gt29&lt/td&gt
+        &lt/tr&gt
+
+    &lt/tbody&gt 
+
+&lt/table &gt
+    </div>   
+    </code></pre>
+    </div>
+
+
+    <h3>Footer com imagens: </h3>
+    <div class="card">
+    <code><pre>       
+    <div class="code">
+
+&ltfooter&gt
+    &ltdiv&gt
+        &ltimg src="instagram.svg" alt="Instagram" /&gt
+        &ltimg src="twitter.svg" alt="Twitter" /&gt
+        &ltimg src="tikTok.svg" alt="TikTok" /&gt
+    &lt/div&gt
+&lt/footer&gt
+    </div>
+    </code></pre>
+    </div>
+
+        <h1> CSS </h1>
+
+    <h3>Hover com shadow: </h3>
+
+    <pre><code>
+        <div class="card">
+            <div class="code">
+.card {
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform:scale(1.05);
+    box-shadow:0 4px 20px rgba(0,1,1,3.1);
+}
+            </div>
+        </div>
+    </code></pre>
+
+    <h1> JavaScript </h1>
+    <h3>Button redirecionar: </h3>
+
+    <pre><code>
+        <div class="card">
+            <div class="code">
+&ltbutton id="meuBotao"&gtredirecionar&lt/button&gt
+
+    &ltscript&gt
+     Seleciona o botão da página
+    const botao = document.getElementById('meuBotao');
+
+     Cria a função que faz o redirecionamento para outra pagina
+    function redirecionar() {
+        window.location.href = "link para redirecionar aqui";
+    }
+
+     Atribui uma função ao clicar no botão
+    botao.addEventListener('click', redirecionar);
+    &lt/script&gt
+            </div>
+        </div>
+    </code></pre>
+
+    <h1 > Geral: </h1>
+
+    <h3>Como ler e exiber o nome com mvc: </h3>
+    <h5>1° passo database php: </h5>
+    <pre><code>
+        <div class="card">
+            <div class="code">
+&lt?php
+
+class Database
+{
+    // Variável que armazenará a conexão
+    private $conn;
+
+    // Método que cria e retorna a conexão
+    public function connect()
+    {
+        $this->conn = new PDO(
+            "mysql:host=localhost;dbname=teste",
+            "root",
+            ""
+        );
+
+        return $this->conn;
+    }
+}
+            </div>
+        </div>
+            </code></pre>
+
+    <h5>2° passo model php: </h5>
+    <pre><code>
+        <div class="card">
+            <div class="code">
+
+&lt?php
+
+require_once 'database.php';
+
+class UserModel
+{
+    // Guarda a conexão com o banco
+    private $db;
+
+    // Executado quando o objeto é criado
+    public function __construct()
+    {
+        $database = new Database();
+
+        // Obtém a conexão do arquivo database.php
+        $this->db = $database->connect();
+    }
+
+    // Busca um usuário pelo ID
+    public function getUser($id)
+    {
+        // Consulta SQL
+        $sql = "SELECT nome FROM usuarios WHERE id = ?";
+
+        // Prepara a consulta
+        $stmt = $this->db->prepare($sql);
+
+        // Executa passando o ID
+        $stmt->execute([$id]);
+
+        // Retorna o resultado
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+}
+
+            </div>
+        </div>
+            </code></pre>
+
+    <h5>3° passo controller php: </h5>
+    <pre><code>
+        <div class="card">
+            <div class="code">
+
+
+&lt?php
+
+require_once 'model.php';
+
+class UserController
+{
+    public function showUser()
+    {
+        // Cria o Model
+        $userModel = new UserModel();
+
+        // Busca o usuário de ID 1
+        $user = $userModel->getUser(1);
+
+        // Envia os dados para a View
+        require 'home.php';
+    }
+}
+            </div>
+        </div>
+            </code></pre>
+    <h5>4° passo home php: </h5>
+    <pre><code>
+        <div class="card">
+            <div class="code">
+&lt?php
+
+&lt!DOCTYPE html&gt
+&lthtml&gt
+&lthead&gt
+    &lttitle&gtExemplo MVC&lt/title&gt
+&lt/head&gt
+&ltbody&gt
+
+    &lth1&gtUsuário&lt/h1&gt
+
+    &ltp&gt
+        Nome:
+        &lt?php echo $user['nome']; ?&gt
+    &lt/p&gt
+
+&lt/body&gt
+&lt/html&gt
+            </div>
+        </div>
+            </code></pre>
+      
+        
+
+
+
+    
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .card {
+            background-color: rgb(211, 136, 74); 
+            border-color: black;
+            border-radius: 10px; 
+            width: 800px;
+            align-items: center;
+            margin-left: 200px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform:scale(1.05);
+            box-shadow:0 4px 20px rgba(0,1,1,3.1);
+        }
+        .code {
+            margin-left: 20px;
+        }
+    </style>
+
+
+
+
+
+    
+</body>
+</html>

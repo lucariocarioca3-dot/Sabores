@@ -1,0 +1,6 @@
+id, nome,           email,                      nome_usuario,       imagem,         senha,      criado_em,              atualizado_em
+1,  Sabores,        sabores@email.com,          Sabores,            0x01PNG...,     12345678,   2026-01-04 09:00:00,    2026-01-04 09:00:00
+2,  Maria Santos,   maria.santos@email.com,     mariasantos,        0x89PNG...,     12345678,   2026-01-11 11:00:00,    2026-01-11 11:00:00
+3,  Pedro Souza,    pedro.souza@email.com,      pedrosouza,         0x89PNG...,     12345678,   2026-01-12 12:00:00,    2026-01-12 12:00:00
+4,  Ana Costa,      ana.costa@email.com,        anacosta,           0x89PNG...,     12345678,   2026-01-13 13:00:00,    2026-01-13 13:00:00
+5,  João Silva,     joao.silva@email.com,       joaosilva,          0x89PNG...,     12345678,   2026-01-10 10:00:00,    2026-01-10 10:00:00

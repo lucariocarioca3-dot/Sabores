@@ -2,7 +2,7 @@
 
     session_start();
 
-    require_once '../src/models/model_usuario.php';
+    require_once __DIR__ . '/../src/models/model_usuario.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['page']) && $_GET['page'] === 'login'){
         $raw = file_get_contents('php://input');
@@ -42,15 +42,15 @@
 
 switch ($page){
     case 'home':
-        require_once '../src/controllers/controller_r.php';
+        require_once __DIR__ . '/../src/controllers/controller_r.php';
         $controller = new controladoraFeed();
         $dadosFeed = $controller->exibirFeed();
         $totalReceitas = $dadosFeed['totalReceitas'];
         $totalPaginas = $dadosFeed['totalPaginas'];
         $receitas = $dadosFeed['receitas'];
         $paginaAtual = $dadosFeed['paginaAtual'];
-        include '../src/views/home.php';
+        include __DIR__ . '/../src/views/home.php';
     case 'login':
-        include '../src/views/login.php';
+        include __DIR__ . '/../src/views/login.php';
     break;
 }
